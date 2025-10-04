@@ -1,6 +1,5 @@
 import sqlite3
-
-
+from popup_window import popup_window
 
 def add(app_name, password): # adds a new password to the table 
  connection = sqlite3.connect('database/test.db')
@@ -33,4 +32,6 @@ def view_all(): # shows all of the entrys within the database
  cursor.execute("SELECT * FROM passwords")
  all = cursor.fetchall()
  print(all)
+ p = popup_window("hello", "enter anything")
+ p.show()
  return all
