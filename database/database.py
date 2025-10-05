@@ -24,24 +24,29 @@ def replace(): # allows you to update your password, finding it by app_name
  cursor = connection.cursor()
  p = popup_window("Enter App Name", "please enter your app name")
  app_name = p.text_field.text()
- password = generate_password(lenght=20)
+ password = generate_password(length=20)
  cursor.execute("UPDATE passwords SET password = (?) WHERE app_name = (?)", (password, app_name))
  connection.commit()
 
-def view_specific(app_name): # allows you to view a specific password, finding it by app_name
+def view_specific(mainwindow): # allows you to view a specific password, finding it by app_name
  connection = sqlite3.connect('database/test.db')
  cursor = connection.cursor()
  p = popup_window("Enter App Name", "please enter your App Name")
  app_name = p.text_field.text()
  cursor.execute("SELECT password FROM passwords WHERE app_name = (?)", (app_name, ))
- all = cursor.fetchall()[0][0]
- print(all)
- return all
+ try:
+  all = cursor.fetchall()[0][0]
+ except(IndexError):
+  all = ''
+ mainwindow.output.setText(all)
 
-def view_all(): # shows all of the entrys within the database
+
+def view_all(mainwindow): # shows all of the entrys within the database
  connection = sqlite3.connect('database/test.db')
  cursor = connection.cursor()
  cursor.execute("SELECT * FROM passwords")
  all = cursor.fetchall()
- print(all)
- return all
+ string = ""
+ for password in all:
+  string += password[0] + ": " + password[1] + ";"
+ mainwindow.output.setText(string)
