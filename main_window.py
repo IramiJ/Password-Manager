@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QPushButton
+from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QLabel
 from PyQt5.QtCore import Qt
 from Button import button
 from database.database import view_all
@@ -10,6 +10,7 @@ class MainWindow(QMainWindow):
   self.initUI()
 
  def initUI(self):
+  #all of the Main window setups
   self.setWindowTitle("Password Manager")
   self.setGeometry(0,0,800,560)
   self.setMaximumHeight(560)
@@ -21,7 +22,8 @@ class MainWindow(QMainWindow):
   grid.setAlignment(Qt.AlignTop | Qt.AlignLeft)
   central_widget.setLayout(grid)
   self.setCentralWidget(central_widget)
-  #added a test button to see if everything works
+  #adding buttons to the mainwindow
+  self.output = QLabel(self)
   buttons = {
    'Add_button': button(160, 50, "Add password",self,add),
    'Delete_button': button(160,50,"Delete password",self,remove),
@@ -33,3 +35,10 @@ class MainWindow(QMainWindow):
   for b in buttons:
    grid.addWidget(buttons[b],0,i)
    i+=1
+  #adding the output of dat
+  
+  self.output.setText("hello")
+  grid.addWidget(self.output)
+  self.output.setBaseSize(800, 200)
+  
+
