@@ -2,7 +2,7 @@ import sqlite3
 from popup_window import popup_window
 from password_generator import generate_password
 
-def add(): # adds a new password to the table 
+def add(mainwindow): # adds a new password to the table 
  connection = sqlite3.connect('database/test.db')
  cursor = connection.cursor()
  p1 = popup_window("Enter App Name", "pleace enter your app name")
@@ -11,7 +11,7 @@ def add(): # adds a new password to the table
  cursor.execute("INSERT INTO passwords VALUES (?, ?) ", (app_name, password))
  connection.commit()
 
-def remove(): # removes a certain password from the table
+def remove(mainwindow): # removes a certain password from the table
  connection = sqlite3.connect('database/test.db')
  cursor = connection.cursor()
  p1 = popup_window("Enter App Name", "please enter your app name")
@@ -19,7 +19,7 @@ def remove(): # removes a certain password from the table
  cursor.execute("DELETE FROM passwords WHERE app_name = ?", (app_name, ))
  connection.commit()
 
-def replace(): # allows you to update your password, finding it by app_name
+def replace(mainwindow): # allows you to update your password, finding it by app_name
  connection = sqlite3.connect('database/test.db')
  cursor = connection.cursor()
  p = popup_window("Enter App Name", "please enter your app name")
@@ -38,7 +38,7 @@ def view_specific(mainwindow): # allows you to view a specific password, finding
   all = cursor.fetchall()[0][0]
  except(IndexError):
   all = ''
- mainwindow.output.setText(all)
+ mainwindow.output.setPlainText(all)
 
 
 def view_all(mainwindow): # shows all of the entrys within the database
@@ -48,5 +48,5 @@ def view_all(mainwindow): # shows all of the entrys within the database
  all = cursor.fetchall()
  string = ""
  for password in all:
-  string += password[0] + ": " + password[1] + ";"
- mainwindow.output.setText(string)
+  string += password[0] + ": " + password[1] + "; \n"
+ mainwindow.output.setPlainText(string)
