@@ -11,7 +11,11 @@ class popup_window(QDialog):
   self.exec_()
 
  def return_pressed(self):
-  print("hello")
+  self.close()
+  return self.text_field.text()
+ 
+ 
+ 
   
 
 
