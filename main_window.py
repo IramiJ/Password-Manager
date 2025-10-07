@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QLabel, QTextEdit, QHBoxLayout
+from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QLabel, QTextEdit, QHBoxLayout, QSlider
 from PyQt5.QtCore import Qt
 from Button import button, button_bottom
 from database.database import *
@@ -50,11 +50,20 @@ class MainWindow(QMainWindow):
    grid.addWidget(buttons_top[b],0,i)
    i+=1
 
-  
+  self.slider = QSlider(Qt.Horizontal, self)
+  self.slider.setMinimum(1)
+  self.slider.setMaximum(25)
+  self.slider.setValue(10)
+
   #adding the output of dat
   grid.addWidget(self.output)
-  self.output.setFixedSize(800, 200)
+  self.output.setFixedSize(800, 300)
+  grid.addWidget(self.slider, 2, 2, 1, 2)
   grid.addLayout(hbox,grid.rowCount(),0,1,grid.columnCount(),alignment=Qt.AlignRight | Qt.AlignBottom)
+
+  
+
+  
   
   
 
