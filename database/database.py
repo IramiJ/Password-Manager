@@ -7,7 +7,7 @@ def add(mainwindow): # adds a new password to the table
  cursor = connection.cursor()
  p1 = popup_window("Enter App Name", "pleace enter your app name")
  app_name = p1.text_field.text()
- password = generate_password(length=20)
+ password = generate_password(mainwindow.Uppercase, mainwindow.Lowercase, mainwindow.Digits, mainwindow.Symbols, mainwindow.slider.value())
  cursor.execute("INSERT INTO passwords VALUES (?, ?) ", (app_name, password))
  connection.commit()
 
@@ -24,7 +24,7 @@ def replace(mainwindow): # allows you to update your password, finding it by app
  cursor = connection.cursor()
  p = popup_window("Enter App Name", "please enter your app name")
  app_name = p.text_field.text()
- password = generate_password(length=20)
+ password = generate_password(mainwindow.Uppercase, mainwindow.Lowercase, mainwindow.Digits, mainwindow.Symbols, mainwindow.slider.value())
  cursor.execute("UPDATE passwords SET password = (?) WHERE app_name = (?)", (password, app_name))
  connection.commit()
 
