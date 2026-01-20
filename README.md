@@ -48,12 +48,27 @@ Example:
 ```bash
 python -m venv .venv
 source .venv/bin/activate # Windows: .venv\Scripts\activate
-
+```
 pip install -r requirements.txt
 
 ## Run
 
 ```bash
 python main.py
+```
 
+## What I learned
+
+- Building desktop GUI applications with PyQt5
+- Structuring larger python projects
+- Working with SQLite databases (CRUD operations)
+- Seperating UI logic from data handling
+- Handling and validating user input
+
+---
+
+## Future improvements
+- Copy-to-clipboard with automatic clearing
+- Encrypt stored passwords using a master password
+- Export and import database
 
