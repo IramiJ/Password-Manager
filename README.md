@@ -27,10 +27,6 @@ Passwords are stored locally using **SQLite**
 
 ## Screenshots
 
-Add screenshots in the `docs/` folder and reference them here.
-
-Example:
-
 ![Main window](docs/main.png)
 ![Search Dialog](docs/search.png)
 ![Results View](docs/results.png)
