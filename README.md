@@ -16,7 +16,7 @@ Passwords are stored locally using **SQLite**
  - uppercase letters
  - lowercase letters
  - digits
- -symbols 
+ - symbols 
 - Store passwords locally in a SQLite database
 - View all stored entries
 - Search and display a specific entry by name
