@@ -1,7 +1,6 @@
 *.db
 *.sqlite
 *.sqlite3
-!database/passwords.db
 **/__pycache__/
 venv/
 *.py[cod]
